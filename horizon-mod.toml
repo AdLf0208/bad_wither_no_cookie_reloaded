@@ -1,0 +1,28 @@
+id = "bwncr"
+name = "Bad Wither No Cookie Reloaded"
+version = "0.2.0"
+description = """Silences the server-wide Wither spawn and death broadcasts, the wandering trader's
+and llama's ambient calls, the Ender Dragon's death and the Thunder broadcast, plus any sound
+name added to the config's own list — on this client, before the sound engine plays it, which is
+what the original's PlaySoundEvent listener does. A config file keeps the switches, and /bwncr
+status|check|listen|heard|silence|allow|reload report and edit them; /bwncr listen records the
+names of the sounds this client hears so a player can find the ones to add. The original's
+debug log is not carried (a mod has no logger here), and the config file's comments and list
+layout are the port's own."""
+authors = ["Kreezxil", "Eleksploded", "AdLf0208"]
+# A native mod: Rust in src/, compiled by the launcher against the game build [native] pins,
+# beside data/ and assets/. The id is the resource namespace and the only identity: Cargo's
+# package name and version are not the mod's.
+api = "0.2"
+# "both" is the installation side, not the hook's: the silencing is client-side, but an
+# integrated server belongs to the client installation, so single player and a LAN host need
+# both. A dedicated server is "server".
+side = "both"
+# The one shared value every manifest carries ("May add blocks, items, mob effects and entity
+# types"); this mod registers nothing, and the manifest's shape is not negotiable.
+capabilities = ["registries"]
+
+[native]
+game = "26.3"
+horizon = "0b14f8acfd97fa2c750e42795249dcc981178ca4"
+mixins = "e59da9094f0c2fdda6c627fe9eff22dec6a906f0"
